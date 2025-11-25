@@ -27,8 +27,14 @@ const UserList:React.FC=()=>{
             if (response.ok) {
                 const data = await response.json();
                 console.log("Usuario creado:", data);
-                setName("");
-                setEmail("");
+                                setName("");
+                                setEmail("");
+                                // notificar a otros componentes para que refresquen la lista
+                                try {
+                                    window.dispatchEvent(new CustomEvent('user:created'));
+                                } catch (e) {
+                                    // compatibilidad: nada crítico si falla
+                                }
             } else {
                 const errorData = await response.json();
                 console.error("Error al crear usuario:", errorData);
