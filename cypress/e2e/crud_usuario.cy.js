@@ -27,12 +27,27 @@ describe("crud de usuarios",()=>{
                 expect(interception.request.body).to.deep.equal(usuario);
                 expect(interception.response.statusCode).to.equal(201);
             });
+            cy.wait("@listar");
         });
     })
 
 
 
     it("listar usuarios",()=>{
+        cy.fixture('curdUsuario.json').then((mocklist) => { 
+            cy.intercept('GET',
+                 'https://skojryaxbquqtwvuyhfv.supabase.co/rest/v1/users*',{
+
+                     status:200,
+                     body: mocklist
+                 }
+            ).as('listar'); 
+            cy.visit("http://localhost:5174")
+            mocklist.forEach((usuario) =>  {
+                cy.contains(usuario.name).should("exist");
+                cy.contains(usuario.email).should("exist");
+            });
+            })
 
     })
 
