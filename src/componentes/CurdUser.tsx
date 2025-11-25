@@ -1,11 +1,10 @@
+import React from 'react'
 import { useState } from "react";
 
+const CurdUser:React.FC = () => {
 
-const UserList:React.FC=()=>{
-
-    const[name,setName]=useState("");
+       const[name,setName]=useState("");
     const [email,setEmail]=useState("");
-
 
     const guardar=async(e: React.FormEvent)=>{
         e.preventDefault();
@@ -38,9 +37,12 @@ const UserList:React.FC=()=>{
             console.error("Error:", error);
         }
     }
-    
-    return(
-        <div>
+
+
+
+
+  return (
+    <div>
             <h1>Crear Usuarios</h1>
             <form onSubmit={guardar}>
                 <label htmlFor="name">Nombre</label>
@@ -62,7 +64,7 @@ const UserList:React.FC=()=>{
                 <button type="submit">Crear</button>
             </form>
         </div>
-
-    )
+  )
 }
-export default UserList;
+
+export default CurdUser

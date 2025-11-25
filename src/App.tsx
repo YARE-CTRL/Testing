@@ -1,4 +1,5 @@
 import ListaUsuario from './componentes/ListaUsuario'
+import UserList from './componentes/UserList'
 import './App.css'
 
 const App=() =>{
@@ -6,6 +7,8 @@ const App=() =>{
   return (
     <div>
       <ListaUsuario></ListaUsuario>
+      <UserList/>
+
     </div>
   )
 }

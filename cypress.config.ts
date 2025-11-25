@@ -6,12 +6,12 @@ export default defineConfig({
       framework: "react",
       bundler: "vite",
     },
+    specPattern: "src/**/*.cy.{js,jsx,ts,tsx}",
   },
 
-  component: {
-    devServer: {
-      framework: "react",
-      bundler: "vite",
+  e2e: {
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
     },
   },
 });
